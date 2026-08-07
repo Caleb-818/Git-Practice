@@ -1,0 +1,7 @@
+CREATE TABLE TASKS (
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    completed INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES USERS(id)
+);
