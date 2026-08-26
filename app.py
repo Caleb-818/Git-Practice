@@ -1,5 +1,6 @@
 import sqlite3
-from flask import Flask
+from flask import Flask, request, render_template, redirect, url_for
+from werkzeug.security import generate_password_hash
 
 #Creating the flask application object. Every route, template and configuration attaches to this object.
 
@@ -25,6 +26,37 @@ def init_db():
 
 #Make sure the database and tables exist before the app starts dealing with requests
 init_db()
+
+#Routes
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'GET':
+        return render_template('register.html')
+
+    username = request.form['username']
+    password = request.form['password']
+
+    if not username or not password:
+        return "Username and Password are required."
+
+    hashed = generate_password_hash(password)
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(
+            "INSERT INTO USERS (username, password_hash) VALUES (?, ?)",
+            (username, hashed)
+        )
+        connection.commit()
+    except sqlite3.IntegrityError:
+        connection.close()
+        return "That username is already taken"
+
+    connection.close()
+    return redirect(url_for('register'))
 
 
 if __name__ == '__main__':
