@@ -1,10 +1,11 @@
 import sqlite3
-from flask import Flask, request, render_template, redirect, url_for
-from werkzeug.security import generate_password_hash
+from flask import Flask, request, render_template, redirect, url_for, session
+from werkzeug.security import generate_password_hash, check_password_hash
 
 #Creating the flask application object. Every route, template and configuration attaches to this object.
 
 app = Flask(__name__)
+app.secret_key = 'development'
 
 
 def get_connection():
@@ -58,6 +59,26 @@ def register():
     connection.close()
     return redirect(url_for('register'))
 
+
+@app.route('/login', methods= ['GET', 'POST'])
+def login():
+    if request.method =='GET':
+        return render_template('login.html')
+
+    username = request.form['username']
+    password = request.form['password']
+
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM USERS WHERE username = ?", (username,))
+    user = cursor.fetchone()
+    connection.close()
+
+    if user is None or not check_password_hash(user['password_hash'], password):
+        return "Invalid username or password"
+
+    session['user_id'] = user['id']
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     app.run(debug=True)
