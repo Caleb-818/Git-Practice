@@ -80,6 +80,21 @@ def login():
     session['user_id'] = user['id']
     return redirect(url_for('login'))
 
+@app.route('/dashboard')
+def dashboard():
+    user_id = session.get('user_id')
+
+    if user_id is None:
+        return redirect(url_for('login'))
+
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM USERS WHERE id = ?", (user_id,))
+    user = cursor.fetchone()
+    connection.close()
+
+    return render_template('dashboard.html', username=user['username'])
+
 if __name__ == '__main__':
     app.run(debug=True)
 
