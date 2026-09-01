@@ -1,25 +1,34 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <title>Register — Life Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Create an account</h1>
+    <div class="auth-page">
+        <div class="auth-card">
+            <p class="brand">Life Dashboard</p>
+            <h1>Create an account</h1>
+            <p class="subtitle">Please enter your details </p>
 
-    <form method="POST" action="/register">
-        <label for="username">Username</label>
-        <input type="text" id="username" name ="username" required>
-        
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+            <form method="POST" action="/register">
+                <div class="field">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
 
-        <button type= "submit">Register</button>
+                <div class="field">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
 
-    </form>
+                <button type="submit" class="btn">Register</button>
+            </form>
 
+            <p class="switch-link">Already have an account? <a href="/login">Log in</a></p>
+        </div>
+    </div>
 </body>
-
-
-
-
 </html>
+

@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <title>Dashboard — Life Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome!, {{ username }}</h1>
-    <a href="/logout">Log out</a>
+    <div class="topbar">
+        <p class="brand">Life Dashboard</p>
+        <a href="/logout" class="logout-link">Log out</a>
+    </div>
+
+    <div class="dashboard-content">
+        <h1>Welcome, {{ username }}</h1>
+        <p class="subtitle">This is your dashboard</p>
+    </div>
 </body>
 </html>
+

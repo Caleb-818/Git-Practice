@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=Work+Sans:wght@400;500;600&display=swap');
+
+:root {
+    --bg: #EEF0F0;
+    --card: #FFFFFF;
+    --border: #DADDDD;
+    --text: #1C1D1D;
+    --text-secondary: #63676A;
+    --accent: #3B4A5A;
+    --accent-hover: #2E3946;
+    --error-bg: #FBEDEA;
+    --error-text: #8A3B2A;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1, h2, .brand {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--accent);
+}
+
+/* --- Auth pages (login / register) --- */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.auth-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 360px;
+}
+
+.auth-card .brand {
+    font-size: 20px;
+    margin: 0 0 28px;
+    text-align: center;
+    color: var(--text);
+}
+
+.auth-card h1 {
+    font-size: 24px;
+    margin: 0 0 6px;
+    text-align: center;
+}
+
+.auth-card .subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 28px;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+}
+
+.field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.field input:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    background: var(--card);
+}
+
+.btn {
+    width: 100%;
+    padding: 11px;
+    background: var(--accent);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+}
+
+.switch-link {
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-top: 22px;
+}
+
+.switch-link a {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+
+.message {
+    background: var(--error-bg);
+    color: var(--error-text);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    margin-bottom: 20px;
+}
+
+/* --- Dashboard --- */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--card);
+}
+
+.topbar .brand {
+    font-size: 18px;
+}
+
+.logout-link {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.logout-link:hover {
+    color: var(--accent);
+}
+
+.dashboard-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px;
+}
+
+.dashboard-content h1 {
+    font-size: 30px;
+    margin: 0 0 8px;
+}
+
+.dashboard-content .subtitle {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin: 0;
+}
